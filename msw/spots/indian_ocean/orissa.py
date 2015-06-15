@@ -1,0 +1,1 @@
+PURI_BEACH = 840

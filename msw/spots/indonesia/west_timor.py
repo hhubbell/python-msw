@@ -1,0 +1,1 @@
+PALAU_ROTE = 636

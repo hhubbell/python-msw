@@ -1,0 +1,2 @@
+G_LAND = 563
+PACITAN = 833
