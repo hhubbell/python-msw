@@ -7,16 +7,18 @@
 #
 ##########################################################################
 
+from .forecast import Forecast
+
 class Spot(object):
     def __init__(self, spot_id, forecast=None):
         self.spot_id = spot_id
         self.forecast = self.parse(forecast) if type(forecast) is list else {}
 
     def parse(self, forecast_json):
-        fc = {}
+        fc = []
 
         for tf in forecast_json:
-            fc[tf['timestamp']] = tf
+            fc.append(Forecast(**tf))
 
         return fc
 
