@@ -45,9 +45,24 @@ def test_invalid_id(m, spot_id):
     print_result(ok)
     return ok
 
+def test_forecast(m, spot_id):
+    ok = False
+
+    s = m.get(spot_id)
+    #test a bunch of things that should exist
+    ok = (s.forecast and 
+        s.forecast[0] and 
+        s.forecast[0].swell.components.combined.direction and
+        s.forecast[0].wind and
+        s.forecast[0].condition.pressure)
+
+    print_result(ok)
+    return ok
+
 if __name__ == '__main__':
     key = key() 
     m = msw.MagicSeaweed(key)
 
     test_valid_id(m, new_hampshire.THE_WALL)
     test_invalid_id(m, 2000)
+    test_forecast(m, new_hampshire.THE_WALL)
